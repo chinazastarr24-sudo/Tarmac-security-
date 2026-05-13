@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", cursive;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-navy: #0B1120;
+  --color-charcoal: #1E293B;
+  --color-electric-blue: #00A3FF;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-navy text-white font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bebas tracking-wider;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-electric-blue hover:opacity-90 text-white font-bebas px-8 py-3 rounded-sm transition-all duration-300 tracking-wider text-xl uppercase inline-flex items-center justify-center;
+  }
+  
+  .btn-ghost {
+    @apply border border-white hover:bg-white hover:text-navy text-white font-bebas px-8 py-3 rounded-sm transition-all duration-300 tracking-wider text-xl uppercase inline-flex items-center justify-center;
+  }
+
+  .nav-link {
+    @apply text-slate-300 hover:text-electric-blue transition-colors duration-300 font-bebas tracking-widest uppercase text-sm;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2;
+  }
+
+  .diagonal-bg {
+    background: linear-gradient(135deg, #0B1120 60%, #1E293B 60%);
+    position: relative;
+  }
+
+  .diagonal-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+
+  .glass {
+    backdrop-filter: blur(8px);
+    background: rgba(11, 17, 32, 0.8);
+  }
+
+  .service-card {
+    @apply bg-charcoal/70 border-t-2 border-electric-blue transition-all duration-300;
+  }
+
+  .service-card:hover {
+    @apply bg-charcoal -translate-y-1;
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 163, 255, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 163, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 163, 255, 0); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(0, 163, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 163, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
